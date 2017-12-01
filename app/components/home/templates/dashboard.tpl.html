@@ -1,0 +1,71 @@
+<div class="ui grid">
+    <div class="row">
+        <div class="sixteen wide computer sixteen wide tablet sixteen wide mobile column">
+            <div class="ui secondary segment small breadcrumb">
+                <a class="section" ng-repeat="g in groupPath track by $index" ng-click="ctrl.changePath(g, data)" ng-class="{'active': groupPath.length === $index + 1}">{{g.name}} <i class="right chevron icon divider" ng-if="g.profile !== 'INDICADOR'"></i> </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="eigth wide computer eigth wide tablet eigth wide mobile column">
+            <h3 class="ui header">
+                <i class="options icon"></i>
+                {{title}}
+            </h3>
+        </div>
+    </div>
+    <div class="row" ng-if="data.profile !== 'INDICADOR'">
+        <div class="four wide computer six wide tablet sixteen wide mobile column">
+            <div google-chart chart="chartMeterEGR" class="chart meter"></div>
+        </div>
+        <div class="twelve wide computer ten wide tablet sixteen wide mobile column">
+            <div google-chart chart="chartColumnHistEGR" class="chart principal-column"></div>
+        </div>
+    </div>
+
+    <div class="row" ng-if="data.profile !== 'INDICADOR'">
+        <div class="sixteen wide column">
+            <table-directive
+                    service="ctrl.service"
+                    class-single-line="sortable"
+                    reverse-order="reverseOrderParent"
+                    columns="columnsTableParent"
+                    filter="filter"
+                    clear-filter="ctrl.customFilterParent"
+                    column-order="description"
+                    function-filter="ctrl.customFilterParent"
+                    controller="ctrl">
+            </table-directive>
+        </div>
+    </div>
+
+    <div class="row" ng-if="data.profile === 'INDICADOR'" ng-load="loadElement()">
+        <div class="sixteen wide column">
+            <div class="ui stacked segment">
+                <h3 class="ui header">
+                    <i class="sidebar icon"></i>
+                    {{data.detail.username}}
+                </h3>
+                <div class="ui grid">
+                    <div class="ten wide column">
+                        <h2><small>{{data.description}}:</small> {{data.value}}%</h2>
+                        <template-html-directive template="data.detail.detailDescription"></template-html-directive>
+                    </div>
+                    <div class="six wide column">
+                        <table-directive
+                                service="service"
+                                class-single-line="sortable"
+                                reverse-order = "reverseOrderDetails"
+                                columns="columnsTableDetail"
+                                filter="filter"
+                                clear-filter="customFilterDetail"
+                                column-order="variable"
+                                function-filter="customFilterDetail"
+                                controller="ctrl">
+                        </table-directive>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

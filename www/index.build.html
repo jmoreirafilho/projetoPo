@@ -1,0 +1,63 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> 
+
+<html ng-app="Blank" > <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{{'TITULO' | translate}}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel='stylesheet' type='text/css' href='assets/styles/realperson/jquery.realperson.css'>
+        <link rel="stylesheet" href="assets/styles/semantic/semantic.min.css">
+        <link rel="stylesheet" href="assets/styles/semantic/icon.min.css">
+        <link rel="stylesheet" href="assets/styles/styles.css">
+    </head>
+    <body id="home">
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <lockpage></lockpage>
+        <menu></menu>
+
+        <!-- notification -->
+        <div notifybar style="position:fixed;top:0;right:0; z-index: 9999;"></div>
+
+        <div ui-view></div>
+
+        <!-- calling final scripts after loading whole page -->
+        <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="assets/js/vendor/semantic.min.js"></script>
+
+        <!-- Loading Angular Modules -->
+        <script src="assets/libs/angular/angular.js"></script>
+        <script src="assets/libs/angular/angular-sanitize.js"></script>
+        <script src="assets/libs/angular-translate/angular-translate.min.js"></script>
+        <script src="assets/libs/angular-ui-router/angular-ui-router.min.js"></script>
+        <script src="assets/libs/angular-moment/moment.min.js"></script>
+        <script src="assets/libs/angular-moment/moment-timezone.min.js"></script>
+        <script src="assets/libs/angular-moment/angular-moment.min.js"></script>
+        <script src="assets/libs/angular/angular-toastr.js"></script>
+		<script src="assets/libs/angular/angular-toastr.tpls.js"></script>
+        <script src="assets/libs/mask.min.js"></script>
+        
+        <script src="assets/libs/jquery.dataTables.min.js"></script>
+        <script src="assets/libs/dataTables.semanticui.min.js"></script>
+        <script src="assets/libs/angular-datatables/angular-datatables.min.js"></script>
+        
+        <!-- Main Quill library -->
+        <script src="assets/libs/quill.min.js"></script>
+        <script src="assets/libs/ng-quill.min.js"></script>
+        
+        <script src="assets/libs/angular/angular-notify.min.js"></script>
+
+        <script src="app/blank-ui.min.js"></script>
+
+    </body>
+</html>

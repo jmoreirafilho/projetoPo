@@ -1,0 +1,68 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> 
+
+<html ng-app="Blank" > <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{{'TITULO' | translate}}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel='stylesheet' type='text/css' href='assets/css/realperson/jquery.realperson.css'>
+        <link rel="stylesheet" href="assets/css/semantic/semantic.min.css">
+        <link rel="stylesheet" href="assets/css/semantic/icon.min.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/angular-toastr.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/angular-notify-material.min.css">
+
+    </head>
+    <body id="home">
+        <!-- notification -->
+        <div notifybar style="position:fixed;top:0;right:0; z-index: 9999;"></div>
+
+        <div ui-view></div>
+
+        <!-- calling final scripts after loading whole page -->
+        <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="assets/js/vendor/semantic.min.js"></script>
+
+        <!-- Loading Angular Modules -->
+        <script src="assets/libs/angular/angular.js"></script>
+        <script src="assets/libs/angular/angular-sanitize.js"></script>
+        <script src="assets/libs/angular-translate/angular-translate.min.js"></script>
+        <script src="assets/libs/angular-ui-router/angular-ui-router.min.js"></script>
+        <script src="assets/libs/angular-moment/moment.min.js"></script>
+        <script src="assets/libs/angular-moment/moment-timezone.min.js"></script>
+        <script src="assets/libs/angular-moment/angular-moment.min.js"></script>
+        <script src="assets/libs/angular/angular-toastr.js"></script>
+		<script src="assets/libs/angular/angular-toastr.tpls.js"></script>
+		<script src="assets/libs/mask.min.js"></script>
+
+        <script src="assets/libs/angular/angular-notify.min.js"></script>
+        <script src="assets/libs/ng-google-chart.js"></script>
+
+        <script src="app/module.js"></script>
+        <script src="app/routes.js"></script>
+        <script src="app/shared/services/security.int.js"></script>
+        <script src="app/shared/services/interceptor.request.int.js"></script>
+        
+        <!-- context application -->
+        <script src="app/shared/i18n/pt-br.js"></script>
+        <script src="app/shared/services/generalParams.ser.js"></script>
+        <script src="app/shared/directives/lockpage.dir.js"></script>
+        <script src="app/shared/directives/menu/menu.dir.js"></script>
+        <script src="app/shared/directives/menu/menu.ser.js"></script>
+        <script src="app/shared/directives/menu/menu.ctr.js"></script>
+		
+        <!-- context dev -->
+        <script src="app/components/login/login.ser.js"></script>
+        <script src="app/components/login/login.ctr.js"></script>
+
+		<!-- Controllers/Services --> 
+    </body>
+</html>

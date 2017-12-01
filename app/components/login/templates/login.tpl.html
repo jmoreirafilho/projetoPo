@@ -1,0 +1,43 @@
+<div class="ui grid">
+	<div class="row">
+		<div class="three wide computer nine wide mobile column logo"></div>
+	</div>
+</div>
+
+<div class="ui two column centered grid container">
+	<div class="column">
+		<div class="ui segments">
+			<div class="ui segment">
+				<div class="ui vertical segment center aligned">
+		      		<img class="ui centered tiny image circular" onerror="this.src='assets/img/user.png'" 
+                        src="assets/img/user.png">
+		      		<h3 class="centered">{{usuario.name}}</h3>
+			  	</div>
+			</div>
+			<div class="ui secondary clearing segment">
+				<form class="ui form" ng-submit="ctrl.submitLogin()">
+					<div class="ui grid">
+						<div class="three wide column"></div>
+						<div class="ten wide column">
+							<div class="field">
+				  				<label>{{'LOGIN_F' | translate}}: </label>
+				  				<input type="text" ng-model="user.login" placeholder="{{'LOGIN_P' | translate}}">
+							</div>
+							<div class="field">
+				  				<label>{{'PASSWORD_F' | translate}}: </label>
+				  				<input type="password" ng-model="user.password" placeholder="{{'PASSWORD_P' | translate}}">
+							</div>
+						</div>
+						<div class="thirteen wide column">
+							<button class="ui right labeled icon primary button right floated" type='submit' ng-disabled="version === null">
+							  	<i class="sign in icon"></i>
+							  	{{'LOGIN_B' | translate}}
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</div>

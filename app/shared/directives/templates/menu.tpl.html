@@ -1,0 +1,115 @@
+<div class="ui grid" ng-controller="MenuController as ctrl">
+    <div class="computer tablet only row">
+        <div class="ui fixed blue inverted menu">           
+            <h2 class="ui header logo">
+                <i class="line chart icon click" ng-click="ctrl.changeRouter('home', false)"></i>
+                <div class="content">
+                     {{"TITULO" | translate}}
+                </div>
+            </h2>
+            
+            <div class="{{menu.classMenu}}" ng-repeat="menu in ctrl.menusApp track by $index" ng-click="ctrl.changeRouter(menu.action, menu.menus.length > 0)">
+                {{menu.title}}<i ng-if="menu.menus" class="dropdown icon"></i>
+                <div class="menu" ng-if="menu.menus" ng-include="'tree-renderer.html'">
+                </div>
+            </div>
+
+            <script type="text/ng-template" id="tree-renderer.html">
+                <div ng-repeat="menu in menu.menus" class="item">
+                    <div ng-if="!menu.menus" ng-click="ctrl.changeRouter(menu.action, menu.menus.length > 0)">
+                        {{menu.title}}
+                    </div>
+                    <div ng-if="menu.menus">
+                        <i class="dropdown icon"></i>
+                        <span class="text">{{menu.title}}</span>
+                    </div>
+                    <div ng-if="menu.menus" class="menu" ng-include="'tree-renderer.html'">
+                    </div>
+                </div>
+            </script>
+
+            <!-- FOTO PERFIL -->
+            <div class="right menu">
+                <div class="ui dropdown item">
+                    <img class="ui avatar image computer" 
+                        onerror="this.src='assets/img/user.png'" 
+                        src="assets/img/user.png">
+                </div>
+            </div>
+            <div class="ui flowing popup top left transition hidden" data-variation="inverted">
+				<div class="ui cards">
+					<div class="blue card">
+						<div class="content">
+                            <img class="right floated mini ui image" 
+                            onerror="this.src='assets/img/user.png'" 
+                            src="assets/img/user.png">
+							<div class="header">
+								{{ctrl.usuario.name}}
+							</div>
+                            <div class="meta">
+                                {{ctrl.usuario.username}}
+                            </div>
+                            <div class="meta" ng-if="ctrl.usuario.params.version">
+                                <strong>{{'L_VERSION' | translate}}:</strong> {{ctrl.usuario.params.version}}
+                            </div>
+						</div>
+						<div class="extra content">
+                            <span class="right floated" ng-click="ctrl.logout()">
+                                <i class="sign out icon"></i>
+                                {{'L_EXIT' | translate}}
+                            </span>
+							<span class="right floated">
+								<i class="angle left icon"></i>
+						        Versão {{ctrl.versaoSistema}}
+						        <i class="angle right icon"></i>
+						    </span>
+							<a href="#" target="_blank">
+								<i class="photo icon"></i>
+								Foto Perfil
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+    
+    <div class="mobile only row">
+        <div class="ui blue fixed inverted menu">
+            <div class="right menu">
+                <a href="#" class="item mobileMenu">
+                    <i class="sidebar icon"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="#" id="back-to-top" data-tooltip="{{'BACK_TOP' | translate}}" data-position="left center">&uarr;</a>
+
+
+<script>
+    if ($('#back-to-top').length) {
+        var scrollTrigger = 100, // px
+            backToTop = function () {
+                var scrollTop = $(window).scrollTop();
+                if (scrollTop > scrollTrigger) {
+                    $('#back-to-top').addClass('show');
+                    $('#back-to-top').removeClass('removeElement');
+                } else {
+                    $('#back-to-top').removeClass('show');
+                    $('#back-to-top').addClass('removeElement');
+                }
+            };
+        backToTop();
+        $(window).on('scroll', function () {
+            backToTop();
+        });
+        $('#back-to-top').on('click', function (e) {
+            e.preventDefault();
+            $('html,body').animate({
+                scrollTop: 0
+            }, 700);
+        });
+    }
+</script>

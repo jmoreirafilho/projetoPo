@@ -1,0 +1,272 @@
+/* ------- Variables ------- */
+$default-white-color: #f2f2f2;
+
+.ui.dropdown{
+
+    /* giving a soft different color to the first default item 
+    of dropdown which always points to the empty value */
+    .item[data-value="empty"]{
+        color: lightgrey;
+    }
+}
+
+.menu .logo {
+    color: $default-white-color;
+    margin: 10px !important;
+}
+
+.small-select {
+    padding: .49em 1em !important;
+}
+
+.scroll-y { 
+    max-width: 100vw;
+    overflow-x: auto;
+}
+
+.inline-after:after {
+    display: inline !important;
+}
+
+.top-header {
+    margin-top: 60px !important;
+}
+
+.ui.table td.active, .ui.table tr.active {
+    background: #fff!important;
+}
+
+.width-100-percent {
+    width: 100% !important;
+}
+
+.width-auto {
+    width: auto !important;
+}
+
+.ui.dropdown .scrolling.menu .item:first-child, .ui.dropdown .scrolling.menu>.item{
+    border-top: 1px solid #fafafa !important;
+}
+
+.filter-right {
+    left: inherit;
+    right: 0 !important;
+}
+
+.editor>div  {
+  height: 300px;
+  padding-bottom: 70px;
+}
+
+.min-width > div {
+  min-width: 7em !important;
+}
+
+.ui.slider.checkbox input:checked~.box:before, .ui.slider.checkbox input:checked~label:before { 
+    background-color: #2185D0 !important; 
+} 
+ 
+.ui.slider.checkbox .box:before, .ui.slider.checkbox label:before { 
+    background-color: #96c8da !important; 
+}
+
+.ui.slider.checkbox input:focus:checked~.box:before, .ui.slider.checkbox input:focus:checked~label:before {
+    background-color: #2185D0 !important; 
+}
+
+.ellipsis-lines {
+    white-space: pre-wrap !important;
+}
+
+#table_execution>table>tbody>tr>td {
+    word-break: break-all;
+}
+
+.pagination-item-active {
+    background-color: #2185d0 !important;
+    color: white !important;
+}
+
+.original-text-area {
+    height: 4em !important;
+    min-height: 0em !important;
+}
+
+.fixed-position {
+    position: fixed !important;
+}
+
+#selectFilterDiv>div {
+    background: #fff !important;
+}
+
+#dataSourceFiler>select-filter>div {
+    background: #fff !important;
+}
+
+.ui.modal .scrolling.content {
+    max-height: calc(70vh);
+    overflow: auto;
+}
+
+.stack-trace {
+    background-color: #ffffcc;
+    font-size: 110%;
+    padding: 1em;
+    width: 100%;
+    color: #2185d0;
+    font-weight: bolder;
+}
+
+.ui.menu .dropdown.item .menu {
+    min-width: 100% !important; 
+}
+
+.ui.cards .card .content .header {
+    font-family: 'Ubuntu', sans-serif;
+    color: #888;
+    font-size: 13px !important;
+}
+
+.ui.cards .card .extra.content {
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 10px !important;
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 9999;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 30px;
+    background: #2185d0;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: opacity 0.2s ease-out;
+    opacity: 0;
+}
+#back-to-top:hover {
+    background: #72b9ef;
+}
+#back-to-top.show {
+    opacity: 1;
+}
+
+.removeElement {
+    display: none !important;
+}
+
+.click {
+    cursor: pointer;
+}
+
+.chart {
+  width: 100%; 
+}
+
+.meter > table {
+    margin: auto!important;
+}
+
+.column-chart {
+    margin-top: -40px !important;
+    padding-bottom: 50px !important;
+}
+
+.item-chart {
+    margin-top: 0px !important;
+}
+
+@media screen and (min-width: 1100px) {
+    .meter {
+        margin-top: -5px !important;
+        padding-bottom: 90px;
+    }
+
+    .item-chart {
+        margin-top: -10px !important;
+    }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1099px){
+    .meter {
+        margin-top: 0px!important;
+        padding-bottom: 95px;
+    }
+    .item-chart {
+        margin-top: -20px !important;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 999px) {
+    .meter {
+        margin-top: 5px !important;
+        padding-bottom: 95px !important;
+    }
+
+    .item-chart {
+        margin-top: -20px !important;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+    .meter {
+        margin-top: 5px !important;
+    }
+
+    .item-chart {
+        margin-top: 5px !important;
+    }
+
+    .column-chart {
+        padding-bottom: 80px !important;
+    }
+
+    .principal-column {
+        padding-bottom: 80px !important;
+    }
+}
+
+.top-row-chart {
+    margin-top: -130px !important;
+    z-index: 100;
+    position: relative;
+}
+
+.pd-lft-10 {
+    padding-left: 10px;
+}
+
+.center-lbl-field {
+    margin: 10px !important;
+}
+
+.float-right {
+    float: right !important;
+}
+
+.logo {
+    background-image: url('/assets/img/logo.PNG');
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 70px;
+    background-size: auto 100%;
+}
+
+.auto-width-select-directive div {
+    width: auto !important;
+}
+
+.link {
+    text-decoration: underline;
+}
+
+.link:hover {
+    color: #00F;
+}

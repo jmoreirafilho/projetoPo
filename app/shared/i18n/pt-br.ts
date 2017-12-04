@@ -18,6 +18,7 @@ module Blank {
             /* Buttons */
             LOGIN_B: 'Entrar',
         });
+        $translateProvider.useSanitizeValueStrategy('sanitize');
         $translateProvider.preferredLanguage('pt-br');
     }]);
 }

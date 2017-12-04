@@ -3,14 +3,12 @@
 module Blank {
 
 	app.config(function($stateProvider, $urlRouterProvider){
-        $urlRouterProvider.otherwise('/login');
+        $urlRouterProvider.otherwise('/algoritmoGenetico');
         
         $stateProvider
-        .state('login', {
-        	url: '/login',
-        	controller:'LoginController',
-        	controllerAs: 'ctrl',
-        	templateUrl: 'assets/pages/templates/login.tpl.html'
+        .state('algoritmoGenetico', {
+        	url: '/algoritmoGenetico',
+        	templateUrl: 'assets/pages/templates/algoritmoGenetico.tpl.html'
         })
 		;
     });

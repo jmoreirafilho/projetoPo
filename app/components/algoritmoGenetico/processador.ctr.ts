@@ -984,31 +984,29 @@ module Blank {
         private idCromossomos:any = [];
         private idCidades:any = [];
 
+        public podeProcessar:boolean = false;
+
         constructor(private $scope: ng.IScope,
                     private $http: ng.IHttpService,
                     private $q: ng.IQService) {
 
             this.inicializa();
+        }
 
-            while (true) {
-                if (this.naoMelhorouPorNVezes()) {
-                    break;
-                }
-                
-                this.processaCrossOver();
-                this.processaMutacao();
-                this.processaHelitismo();
-                this.solucaoOtimaAtual = this.populacao[0]; // Primeiro cromossomo
-                console.log(this.solucaoOtimaAtual);
+        private processa():void {
+            while (this.qtdVezesQueNaoMelhorou < 40) {
+                  this.naoMelhorouPorNVezes()
+                  this.processaCrossOver();
+                  this.processaMutacao();
+                  this.processaHelitismo();
+                  this.solucaoOtimaAtual = this.populacao[0]; // Primeiro cromossomo
+                  console.log(this.solucaoOtimaAtual);
             }
         }
 
         // Metodos Genericos
-        public ordenaCromossomosDaPopulacao(p_populacao:any):any { // QuickSort para ordenar
-            return this.quickSort(p_populacao);
-        }
 
-        private quickSort(p_populacao:any):any {
+        private ordenaCromossomosDaPopulacao(p_populacao:any):any {
                 if (p_populacao.length <= 1) {
                     return p_populacao;
                 }
@@ -1022,7 +1020,7 @@ module Blank {
                     p_populacao[i].fitness < pivot.fitness ? left.push(p_populacao[i]) : right.push(p_populacao[i]);
                 }
 
-                return this.quickSort(left).concat(pivot, this.quickSort(right));
+                return this.ordenaCromossomosDaPopulacao(left).concat(pivot, this.ordenaCromossomosDaPopulacao(right));
         }
 
         public randomizarCidades(p_todasAsCidades:any):any {
@@ -1129,30 +1127,31 @@ module Blank {
             if (this.solucaoOtimaAnterior.fitness === this.solucaoOtimaAtual.fitness) { 
                 // não melhorou
                 this.qtdVezesQueNaoMelhorou++;
-            } else if (this.solucaoOtimaAnterior.fitness < this.solucaoOtimaAtual.fitness) { 
+            } else if (this.solucaoOtimaAnterior.fitness > this.solucaoOtimaAtual.fitness) { 
                 // melhorou, zera o contador de vezes que nao melhorou
-                this.solucaoOtimaAnterior = angular.copy(this.solucaoOtimaAtual);
                 this.qtdVezesQueNaoMelhorou = 0;
             }
 
             if (this.qtdVezesQueNaoMelhorou === this.qtdVezesQuePodeMelhorar) {
+                this.solucaoOtimaAnterior = angular.copy(this.solucaoOtimaAtual);
                 return true;
             }
+            this.solucaoOtimaAnterior = angular.copy(this.solucaoOtimaAtual);
             return false;
         }
 
         private processaCrossOver():any {
             for (var i = 0; i < 40; ++i) {
-                if (this.aconteceuCrossOver()) {
-                    this.executaCrossOver();
-                }
+                  this.idCromossomos[0] = i;
+                  this.idCromossomos[1] = i+40;
+
+                  if (this.aconteceuCrossOver()) {
+                        this.executaCrossOver();
+                  }
             }
         }
 
         private executaCrossOver():void {
-            // Sorteia dois cromossomos
-            this.idCromossomos = this.sorteiaIdsDiferentes(this.quantidadeCromossomos);
-
             var cidadesNaoAdicionadas = angular.copy(this.todasAsCidades);
 
             // Inicializa cromossomoX
@@ -1176,7 +1175,9 @@ module Blank {
                 }
 
                 // Remove cidade da lista de Cidades Nao Adicionadas
-                cidadesNaoAdicionadas.splice(cidadesNaoAdicionadas.indexOf(cidade), 1);
+                if (cidade != null) {
+                      cidadesNaoAdicionadas.splice(cidadesNaoAdicionadas.indexOf(cidade), 1);
+                }
 
                 // Adiciona cidade no novo cromossomo
                 cromossomoX.cidades.push(cidade);
@@ -1216,10 +1217,10 @@ module Blank {
         }
 
         private processaHelitismo():void {
-            this.ordenaCromossomosDaPopulacao(this.populacao);
+            this.populacao = this.ordenaCromossomosDaPopulacao(this.populacao);
 
             // Deixa apenas a quantidade correta da população
-            this.populacao.slice(0, this.quantidadeCromossomos);
+            this.populacao = this.populacao.slice(0, this.quantidadeCromossomos);
         }
         
     }

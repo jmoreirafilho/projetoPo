@@ -1,6 +1,46 @@
 <div class="ui container" ng-controller="ProcessadorController as ctrl">
-	<div class="ui header">
-		Teste!!!
-		<button class="ui blue basic button" ng-click="ctrl.processa()">Iniciar/Parar</button>
+	<br>
+	<div class="ui segment">
+		<div class="ui header">
+			Parametrização Inicial
+		</div>
+		<div class="ui secondary segment">
+			<div class="ui form">
+				<div class="ui grid">
+					<div class="three wide column">
+						<div class="ui field">
+							<label for="">Taxa CrossOver (%)</label>
+							<input type="text" ng-model="ctrl.taxaCrossOver" placeholder="75">
+						</div>
+					</div>
+					<div class="three wide column">
+						<div class="ui field">
+							<label for="">Taxa de Mutação (%)</label>
+							<input type="text" ng-model="ctrl.taxaMutacao" placeholder="10">
+						</div>
+					</div>
+					<div class="three wide column">
+						<div class="ui field">
+							<label for="">Tamanho da População</label>
+							<input type="text" ng-model="ctrl.quantidadeCromossomos" placeholder="80">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<br>
+		<button class="ui blue basic button" ng-click="ctrl.processa()">Processar</button>
+	</div>
+
+	<div class="ui segment" ng-show="ctrl.exibirResultado">
+		<div class="ui relaxed divided list">
+			<div class="item" ng-repeat="solucao in solucoes track by $index">
+				<i class="large tag middle aligned icon"></i>
+				<div class="content">
+				<a class="header">{{solucoes.length - $index}}&ordf; Geração: {{solucao.fitness}}</a>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
